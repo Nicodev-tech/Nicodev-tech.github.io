@@ -6,7 +6,32 @@ background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox=
 
 .body{
     text-align: center;
-    display: inline-block;
+    display:inline;
+}
+.body img{
+    margin-left: auto;
+  margin-right: auto;
+}
+
+
+.obj{
+    padding: 20px;
+    margin-top: 20px;
+    width: 50%;
+      margin-left: auto;
+  margin-right: auto;
+    background-color: #F5E356;
+    border-radius: 15px;
+}
+.obj p{
+    color:black;
+    font-size: 20px;
+}
+.obj h3{
+      color:white;
+    text-shadow: -2px -2px black;
+    letter-spacing: 2px;
+    font-size: 30px;
 }
 
 .header {
@@ -19,6 +44,8 @@ border-radius: 5px;
 
 /* Style the header links */
 .header a {
+        text-shadow: -2px -2px black;
+
     background-color: #F5E322;
   float: left;
   color: white;
@@ -39,21 +66,24 @@ border-radius: 5px;
   font-weight: bold;
     padding: 0px;
      box-shadow: none;
- background-color: transparent;
+background-color: transparent;
 }
 
 
 
 /* Change the background color on mouse-over */
 .header a.menub:hover {
-  background-color: #f4f4f4;
-  color: black;
+  background-color: white;
+  color: #F5E356;
+        text-shadow: -2px -2px black;
 }
 
 .header a.menub:active {
+    color: white;
   background-color: #F5E356;
   box-shadow: 0 5px #1a1c20;
-  transform: translateY(4px);
+transform: translateY(4px);
+            text-shadow: -2px -2px black;
 }
 
 /* Style the active/current link*/
@@ -61,6 +91,8 @@ border-radius: 5px;
   background-color: #1a1c20;
   color: white;
     box-shadow: 0 9px #f4f4f4;
+
+
 }
 .header a.active:active {
     background-color: #1a1c20;
