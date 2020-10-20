@@ -39,7 +39,7 @@ function Siguente(){
 function secret(){
      document.getElementById("header").style.color = "black";
     setTimeout(color_change, 200);
-           document.getElementById("header").textContent = "EBER TROLO DE MIERDAAA!!!1";
+           document.getElementById("header").textContent = ":D";
         document.body.background = "jesus.gif";
 
 }
