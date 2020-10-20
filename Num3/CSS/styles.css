@@ -1,0 +1,53 @@
+body{
+    background-color:yellow;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+h1{
+    color:lightblue;
+    background-color: grey;
+    padding: 10px 0px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+.contents{
+    font-size:20px;
+     margin: auto;
+
+    text-align: center;
+    position: relative;
+}
+.contents > form > *{
+    font-family: monospace;
+    font-size:20px;
+    margin-top: 10px;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.contents form button, .contents form input{
+    width: 90%;
+}
+
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+  /*whatever width you want*/
+}
