@@ -1,4 +1,4 @@
-var array = [];
+﻿var array = [];
 var auto;
 
 function myFunction(){  
@@ -7,11 +7,17 @@ function myFunction(){
     }
     else{
     var text = "";
-
+        
         for(var i = 0; i < array.length; i++){
-            text += JSON.stringify(array[i])
+            text += "<tr>";
+            text += "<td>"+array[i].año +"</td>";
+             text += "<td>"+array[i].color +"</td>";
+             text += "<td>"+array[i].marca +"</td>";
+             text += "<td>"+array[i].modelo +"</td>";
+            text += "</tr>";
         }
-   alert(text);
+        document.getElementById("table").innerHTML += text;
+        document.getElementById("table").style.display = "inline-table";
     }
  }
 
@@ -25,38 +31,20 @@ function Siguente(){
         alert("Quedaron campos vacios, no se puede crear el objeto")
         return
     }
-    else if(año == "6969" && color == "azulado" && marca == "fitito" && modelo == "f200"){
-            secret()
-        document.getElementById("myAudio").play()
-    }
+  
     auto = {
         "año":año,
         "color":color,
         "marca":marca,
         "modelo":modelo
     };
-    alert(JSON.stringify(auto));
+   // alert(JSON.stringify(auto));
     array.push(auto)
    
     document.getElementById("año").value = "";
     document.getElementById("color").value = "";
     document.getElementById("marca").value = "";
     document.getElementById("modelo").value = "";
-    
-}
-
-function secret(){
-     document.getElementById("header").style.color = "black";
-    setTimeout(color_change, 200);
-           document.getElementById("header").textContent = ":D";
-        document.body.background = "jesus.gif";
-
-}
-
-function color_change(){
-     document.getElementById("header").style.color = "white";
-        setTimeout(secret, 200);
-
     
 }
 
