@@ -7,7 +7,7 @@ function myFunction(){
     }
     else{
     var text = "";
-        
+    document.getElementById("table").innerHTML = "";
         for(var i = 0; i < array.length; i++){
             text += "<tr>";
             text += "<td>"+array[i].año +"</td>";
