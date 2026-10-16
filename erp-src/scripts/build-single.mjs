@@ -31,14 +31,28 @@ html = html.replace(
 /* ---------- JS inline (formato IIFE: script clásico) ---------- */
 let js = readFileSync(join(erp, "assets", jsFile), "utf8");
 
-/* WASM embebido como data-URI: reemplaza new URL("sql-wasm-*.wasm", import.meta.url) */
+/* WASM embebido como data-URI: reemplaza new URL("sql-wasm-*.wasm", import.meta.url[\).href]
+   El generador emite el sufijo ".href"; si no se consume, la expresión queda como
+   "data:...".href  →  undefined  →  "both async and sync fetching of the wasm failed". */
 if (wasmFile) {
   const b64 = readFileSync(join(erp, "assets", wasmFile)).toString("base64");
   const dataUri = `data:application/wasm;base64,${b64}`;
   js = js.replace(
-    /new URL\("sql-wasm-[A-Za-z0-9_-]+\.wasm",\s*import\.meta\.url\)/,
+    /new URL\("sql-wasm-[A-Za-z0-9_-]+\.wasm",\s*import\.meta\.url\)(?:\.href)?/g,
     `"${dataUri}"`
   );
+}
+
+/* Control: el data-URI no puede estar seguido de acceso a propiedad (".href", ["..."]) */
+{
+  const i = js.indexOf("data:application/wasm;base64,");
+  if (i === -1) throw new Error("El data-URI del wasm no quedó embebido");
+  let end = i + 30;
+  while (end < js.length && /[A-Za-z0-9+/=]/.test(js[end])) end++;
+  const after = js.slice(end, end + 12);
+  if (/^\s*(?:\.\s*\w+|\[)/.test(after)) {
+    throw new Error("El data-URI quedó con acceso a propiedad colgante (bug de reemplazo)");
+  }
 }
 
 /* Evita que el propio código rompa el tag <script> contenedor */
