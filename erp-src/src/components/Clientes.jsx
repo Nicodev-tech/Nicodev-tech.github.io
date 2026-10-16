@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { run, onChange } from "../db/database.js";
+import { all, run, onChange } from "../db/database.js";
 import { money, qty } from "../lib/format.js";
 import Modal from "./Modal.jsx";
 
