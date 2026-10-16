@@ -82,6 +82,17 @@ export function lastInsertId() {
 
 /* ---------- Inicialización y reset ---------- */
 
+/* Convierte la URL del wasm en bytes:
+   - data-URI (build empaquetado) → decodificación directa, sin red
+   - URL normal (desarrollo / build estándar) → fetch */
+async function wasmBytes() {
+  if (wasmUrl.startsWith("data:")) {
+    const b64 = wasmUrl.slice(wasmUrl.indexOf("base64,") + 7);
+    return Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+  }
+  return new Uint8Array(await (await fetch(wasmUrl)).arrayBuffer());
+}
+
 function createFreshDb() {
   db = new SQL.Database();
   db.run("PRAGMA foreign_keys = ON");
@@ -100,7 +111,9 @@ export function resetDb() {
 
 export async function initDb() {
   if (db) return;
-  SQL = await initSqlJs({ locateFile: () => wasmUrl });
+  // Pasa el wasm como bytes ya decodificados: no depende de que emscripten
+  // lo descargue (evita el error "both async and sync fetching of the wasm failed")
+  SQL = await initSqlJs({ wasmBinary: await wasmBytes() });
 
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
