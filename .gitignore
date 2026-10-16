@@ -1,0 +1,7 @@
+# Dependencias y builds intermedios
+erp-src/node_modules/
+erp-src/dist/
+
+# Sistema
+.DS_Store
+Thumbs.db

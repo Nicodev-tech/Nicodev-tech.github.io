@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Pixel-Art — Nico Dev</title>
+  <meta name="description" content="Mini editor de pixel-art hecho con la API Canvas: lápiz, balde, cuentagotas, espejo y export a PNG." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎨%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="../index.html">← Volver al portafolio</a>
+    <h1>🎨 Editor de Pixel-Art</h1>
+  </header>
+
+  <main class="app">
+    <aside class="panel">
+      <div class="group">
+        <label>Tamaño</label>
+        <div class="seg" id="sizeSeg">
+          <button data-size="8">8×8</button>
+          <button data-size="16" class="active">16×16</button>
+          <button data-size="32">32×32</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Herramientas</label>
+        <div class="seg wrap" id="toolSeg">
+          <button data-tool="pencil" class="active" title="Lápiz">✏️</button>
+          <button data-tool="eraser" title="Goma">🧽</button>
+          <button data-tool="bucket" title="Balde de pintura">🪣</button>
+          <button data-tool="picker" title="Cuentagotas">💧</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Color</label>
+        <div class="palette" id="palette"></div>
+        <div class="custom-color">
+          <input type="color" id="colorInput" value="#22c55e" title="Color personalizado" />
+          <span class="chip color-chip" id="colorChip"></span>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Opciones</label>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" id="mirrorChk" /> Modo espejo</label>
+          <label class="opt"><input type="checkbox" id="gridChk" checked /> Mostrar grilla</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Historial</label>
+        <div class="row">
+          <button class="btn ghost sm" id="undoBtn" title="Deshacer (Ctrl+Z)">↩ Deshacer</button>
+          <button class="btn ghost sm" id="redoBtn" title="Rehacer (Ctrl+Y)">↪ Rehacer</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Acciones</label>
+        <div class="row col">
+          <button class="btn primary sm" id="saveBtn">💾 Guardar</button>
+          <button class="btn ghost sm" id="clearBtn">🗑️ Limpiar lienzo</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Exportar PNG</label>
+        <div class="row">
+          <select id="exportScale" class="select">
+            <option value="8">×8</option>
+            <option value="16" selected>×16</option>
+            <option value="32">×32</option>
+            <option value="64">×64</option>
+          </select>
+          <button class="btn primary sm" id="exportBtn">⬇ Exportar</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="canvas-wrap">
+      <canvas id="canvas"></canvas>
+      <p class="status" id="status">16×16 · lápiz · #22c55e</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

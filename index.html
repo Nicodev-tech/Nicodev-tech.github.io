@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nico Dev — Desarrollador Full-Stack</title>
+  <meta name="description" content="Portafolio de Nico Dev: proyectos web con React, SQLite y Canvas." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a href="#inicio" class="nav-logo" id="navLogo">ND</a>
+    <nav class="nav-links" id="navMenu">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-text reveal">
+        <p class="hero-greeting" id="heroGreeting"></p>
+        <h1 class="hero-name" id="heroName"></h1>
+        <h2 class="hero-role" id="heroRole"></h2>
+        <p class="hero-tagline" id="heroTagline"></p>
+        <div class="hero-cta" id="heroCta"></div>
+        <div class="hero-badges" id="heroBadges"></div>
+      </div>
+      <div class="hero-avatar reveal" aria-hidden="true">
+        <div class="avatar-ring"><span id="heroAvatar"></span></div>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="section">
+      <h2 class="section-title reveal" id="aboutTitle">Sobre mí</h2>
+      <div class="about-text reveal" id="aboutText"></div>
+      <h3 class="subsection-title reveal">Skills</h3>
+      <div class="chips" id="skillsList"></div>
+    </section>
+
+    <section id="proyectos" class="section">
+      <h2 class="section-title reveal">Proyectos</h2>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2 class="section-title reveal" id="contactTitle">Contacto</h2>
+      <p class="contact-lead reveal">¿Tenés una idea o un proyecto en mente? Escribime:</p>
+      <div class="contact-links" id="contactLinks"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> <span id="footName"></span> — Hecho a mano, sin frameworks.</p>
+    <p class="footer-mini">Demo: <a href="erp/index.html">ERP con SQLite</a> · <a href="pixel-art/index.html">Editor de pixel-art</a></p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
